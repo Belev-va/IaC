@@ -2,7 +2,7 @@
 
 
 provider "google" {
-  credentials = file ("gcp-creds.json")
+  credentials = file ("howlight-429011-5462918077ef.json")
   project = "howlight-429011"
   region  = "us-central1"
   zone    = "us-central1-c"
@@ -22,5 +22,9 @@ resource "google_compute_instance" "vm_instance" {
     network = "default"
     access_config {
     }
+  }
+  metadata = {
+    ssh-keys = "howlight:${file("root.pub")}"
+    enable-oslogin : "FALSE"
   }
 }
