@@ -2,29 +2,27 @@
 
 
 provider "google" {
-  credentials = file ("howlight-429011-5462918077ef.json")
+  credentials = file (var.cred)
   project = "howlight-429011"
   region  = "us-central1"
   zone    = "us-central1-c"
 }
-resource "google_compute_instance" "vm_instance" {
-  name         = "terraform-instance"
-  machine_type = "e2-micro"
 
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-11"
-    }
-  }
+terraform {
+  backend "gcs" {
+    credentials = "howlight-429011-5462918077ef.json"
+    bucket = "terraform-gcp-felix"
+    prefix = "terraform/state"
 
-  network_interface {
-    # A default network is created for all GCP projects
-    network = "default"
-    access_config {
-    }
-  }
-  metadata = {
-    ssh-keys = "howlight:${file("root.pub")}"
-    enable-oslogin : "FALSE"
   }
 }
+
+module "master_nods" {
+  source                  = "./modules/instance"
+  instance_name           = "minecraft"
+  #instance_type           = "n2-standard-2"
+  instance_count          = 1
+  #instance_subnet_id      = module.network.private_subnet_id
+  #instance_security_group = [module.security_group.private_security_group_id]
+}
+
