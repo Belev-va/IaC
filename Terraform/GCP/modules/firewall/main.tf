@@ -13,18 +13,5 @@ resource "google_compute_firewall" "default" {
   source_tags = ["s-app"]
 }
 
-/*
-resource "google_compute_firewall" "samba" {
-  name    = "samba-firewall"
-  network = "default"
 
-  allow {
-    protocol = "tcp"
-    ports    = ["20","21", "25", "53", "80","110","139","143","443","445","465","587","993","995","53835"]
-  }
 
-  target_tags = ["samba"]
-
-  source_tags = ["smb"]
-}
-*/

@@ -1,8 +1,7 @@
 #GCP Instance module
-
-resource "google_compute_instance" "instance" {
+resource "google_compute_instance" "example" {
   count        = var.instance_count
-  name         = "${var.instance_name}-node-${count.index}"
+  name         = "${var.instance_name}-${count.index}"
   machine_type = var.instance_type
   zone         = "${var.region}-${var.zone}"
   tags         = ["client", "auto-join", "nginx", "http-server", "https-server"]
@@ -25,6 +24,8 @@ resource "google_compute_instance" "instance" {
   }
 
 }
+
+
 
 
 

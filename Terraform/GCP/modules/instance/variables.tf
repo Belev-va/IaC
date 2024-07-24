@@ -24,7 +24,7 @@ variable "instance_count" {
 }
  variable "instance_name" {
    type        = string
-   default     = "k8s"
+   default     = "talos"
    description = "Name for instances."
  }
 # Configuration variables
@@ -46,4 +46,11 @@ variable "image" {
   default     = "projects/cos-cloud/global/images/family/cos-stable"
   description = "The GCP image name (built with Packer)."
 }
+
+
+variable "ig_name" {
+  type = string
+  default = "talos-ig"
+}
+
 
