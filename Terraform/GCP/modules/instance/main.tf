@@ -1,10 +1,11 @@
 #GCP Instance module
+
 resource "google_compute_instance" "example" {
   count        = var.instance_count
   name         = "${var.instance_name}-${count.index}"
   machine_type = var.instance_type
   zone         = "${var.region}-${var.zone}"
-  tags         = ["client", "auto-join", "nginx", "http-server", "https-server"]
+  tags         = var.instance_tags
 
   allow_stopping_for_update = true
 

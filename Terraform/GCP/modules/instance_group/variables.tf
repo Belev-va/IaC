@@ -19,3 +19,12 @@ variable "ig_name" {
 variable "instances" {
   type = list(string)
 }
+
+variable "named_port_name" {
+  type = string
+  default = "tcp6443"
+}
+variable "named_port_port" {
+  type = string
+  default = "6443"
+}

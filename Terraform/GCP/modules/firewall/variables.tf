@@ -1,42 +1,34 @@
-#Variables for sg
+#Variables for firewall
 
 variable "name" {
   type        = string
-  default     = "dev"
-  description = "Name for stand"
+  default     = "custom_firewall"
 }
 
-variable "vpc_id" {
-  type        = string
-  default     = "default"
-  description = "Vpc for firewall"
+variable "network" {
+  default = "default"
 }
 
-/*
-variable "public_description" {
-  type        = string
-  default     = "Allow ingres for ports 22, 80, 443 from internet"
-  description = "Description for sg"
+variable "ports" {
+  type = list(string)
+  default = ["50000"]
 }
 
-variable "private_description" {
-  type        = string
-  default     = "Allow ingres for ports 22 from public subnet"
-  description = "Description for sg"
+variable "protocols" {
+  type = string
+  default = "tcp"
 }
 
-variable "public_cidr" {
-  type        =  list(string)
-  default     = ["0.0.0.0/0"]
-  description = "cidr block for vpc"
+variable "source_ranges" {
+  type = list(string)
+  default = ["0.0.0.0/0"]
 }
 
-variable "private_cidr" {
-  type        =  list(string)
-  default     = ["0.0.0.0/32"]
-  description = "cidr block for vpc"
+variable "target_tags" {
+  type = list(string)
+  default = ["talos-controlplane"]
 }
-*/
+
 
 
 

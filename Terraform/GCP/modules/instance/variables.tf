@@ -28,6 +28,10 @@ variable "instance_count" {
    description = "Name for instances."
  }
 # Configuration variables
+variable "instance_tags" {
+  type = list(string)
+  default = [ "http-server", "https-server"]
+}
 
 variable "instance_type" {
   type        = string
