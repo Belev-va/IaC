@@ -7,9 +7,6 @@ resource "google_compute_backend_service" "general-service-backend" {
   health_checks = var.backend_service_health_checks
 
   backend {
-    // group - (Required) The name or URI of a Compute Engine instance group
-    // because of https://github.com/terraform-providers/terraform-provider-google/pull/1207
-    // we can now use node-pools (k8s) with backends
-    group = var.instance_group
+     group = var.instance_group
   }
 }

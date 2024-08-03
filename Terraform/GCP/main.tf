@@ -64,6 +64,16 @@ module "target_tcp_proxy" {
   backend_service = module.backend_service.backend_name
 }
 
+resource "google_compute_address" "ip_address" {
+  name = "talos-lb-ip"
+}
+
+module "forwarding_rules" {
+  source = "./modules/forwarding_rules"
+  name = "talos-fwd-rule"
+  address    = google_compute_address.ip_address.self_link
+  proxy_name = module.target_tcp_proxy.proxy_id
+}
 
 
 
