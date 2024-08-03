@@ -58,6 +58,13 @@ module "backend_service" {
   instance_group                = module.instance_group.instance_group_self_link
 }
 
+module "target_tcp_proxy" {
+  source = "./modules/targetproxy"
+
+  backend_service = module.backend_service.backend_name
+}
+
+
 
 
 
