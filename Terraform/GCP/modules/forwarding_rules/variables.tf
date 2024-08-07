@@ -1,12 +1,13 @@
 variable "address" {
 
 }
-variable "proxy_name" {
+variable "target" {
 
 }
 variable "port" {
-  default = ["443"]
+  default = "443"
 }
 variable "name" {
   default = "forwarding_rules"
 }
+

@@ -2,7 +2,7 @@
 #General variables
 variable "region" {
   type        = string
-  default     = "europe-west1"
+  default     = "us-central1"
   description = "The GCP region to deploy resources in."
 }
 variable "zone" {
